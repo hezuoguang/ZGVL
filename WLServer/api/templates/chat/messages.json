@@ -1,0 +1,24 @@
+{% autoescape off %}
+{
+  "messages": [
+    {% for message in messages %}
+    {
+      "m_id": "{{ message.id }}",
+      "text": "{{ message.text }}",
+      "create_time": "{{ message.create_time }}",
+      "type": "{{ message.type }}",
+      "from_user": {
+        "uid": "{{ message.user_set.all.first.uid }}",
+        "name": "{{ message.user_set.all.first.name }}",
+        "photo": "{{ message.user_set.all.first.photo }}"
+      },
+      "to_user": {
+        "uid": "{{ message.to_user.uid }}",
+        "name": "{{ message.to_user.name }}",
+        "photo": "{{ message.to_user.photo }}"
+      }
+    },
+    {% endfor %}
+  ]
+}
+{% endautoescape %}

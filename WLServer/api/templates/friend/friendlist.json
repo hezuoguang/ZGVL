@@ -1,0 +1,13 @@
+{% autoescape off %}
+{
+  "friendlist": [
+    {% for friend in friendlist %}
+    {
+      "uid": "{{ friend.uid }}",
+      "name": "{{ friend.name }}",
+      "photo": "{{ friend.photo }}"
+    },
+    {% endfor %}
+  ]
+}
+{% endautoescape %}

@@ -1,0 +1,24 @@
+{% autoescape off %}
+{
+  "statuses": [
+    {% for status in statuses %}
+    {
+      "s_id": "{{ status.id }}",
+      "text": "{{ status.text }}",
+      "create_time": "{{ status.create_time }}",
+      "pics":[
+        {% for pic in status.pics %}
+        "{{ pic }}",
+        {% endfor %}
+      ],
+      "count" : "{{ status.comment_set.all.count }}",
+      "from_user": {
+        "uid": "{{ status.from_user.uid }}",
+        "name": "{{ status.from_user.name }}",
+        "photo": "{{ status.from_user.photo }}"
+      }
+    },
+    {% endfor %}
+  ]
+}
+{% endautoescape %}

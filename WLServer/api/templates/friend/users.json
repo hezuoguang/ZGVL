@@ -1,0 +1,13 @@
+{% autoescape off %}
+{
+  "users": [
+    {% for user in users %}
+    {
+      "uid": "{{ user.uid }}",
+      "name": "{{ user.name }}",
+      "photo": "{{ user.photo }}"
+    },
+    {% endfor %}
+  ]
+}
+{% endautoescape %}

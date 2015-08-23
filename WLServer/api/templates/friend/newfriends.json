@@ -1,0 +1,18 @@
+{% autoescape off %}
+{
+  "newfriends": [
+    {% for newfriend in newfriends %}
+    {
+      "f_id": "{{ newfriend.id }}",
+      "text": "{{ newfriend.text }}",
+      "create_time": "{{ newfriend.create_time }}",
+      "from_user": {
+        "uid": "{{ newfriend.user_set.all.first.uid }}",
+        "name": "{{ newfriend.user_set.all.first.name }}",
+        "photo": "{{ newfriend.user_set.all.first.photo }}"
+      }
+    },
+    {% endfor %}
+  ]
+}
+{% endautoescape %}

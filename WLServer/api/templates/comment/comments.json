@@ -1,0 +1,18 @@
+{% autoescape off %}
+{
+  "comments": [
+    {% for comment in comments %}
+    {
+      "c_id": "{{ comment.id }}",
+      "text": "{{ comment.text }}",
+      "create_time": "{{ comment.create_time }}",
+      "from_user": {
+        "uid": "{{ comment.from_user.uid }}",
+        "name": "{{ comment.from_user.name }}",
+        "photo": "{{ comment.from_user.photo }}"
+      }
+    },
+    {% endfor %}
+  ]
+}
+{% endautoescape %}

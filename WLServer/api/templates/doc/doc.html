@@ -1,0 +1,1112 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+    margin: 10px 0 15px 0;
+    border-collapse: collapse;
+}
+td,th { 
+    border: 1px solid #ddd;
+    padding: 3px 10px;
+}
+th {
+    padding: 5px 10px;  
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+    -webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+    body,code,pre code,h1,h2,h3,h4,h5,h6 {
+        color: black;
+    }
+    table, pre {
+        page-break-inside: avoid;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<h1>微米通讯云API</h1>
+
+<hr />
+<h3>
+实现的比较粗糙,还有好多功能未实现</h3>
+
+<ol>
+<li>
+        <p>注册 <code>api/register.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>uid - 用户名    </li>
+                                <li>pwd - 密码(建议先进行加密,若进行了加密处理,以后所有的pwd参数都应进行同样的加密处理)    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;success&quot;: {
+					    &quot;message&quot;: &quot;注册成功&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>登录 <code>api/login.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>uid - 用户名    </li>
+                                <li>pwd - 密码    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;user&quot;: {
+					    &quot;uid&quot;: &quot;用户名&quot;,
+					    &quot;name&quot;: &quot;昵称&quot;,
+					    &quot;photo&quot;: &quot;头像&quot;,
+					    &quot;access_token&quot;: &quot;授权标识&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>发送一条消息 <code>api/chat/upload.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>text - 消息内容(文字消息为:消息内容;  gif表情消息为:gif表情对应的图片名称;语音,图片消息为:资源的url)  </li>
+                                <li>type - 消息类型(0,  "文本消息"),(1,  "gif表情消息"),(2, "图片消息"),(3, "语音消息")
+ </li>
+                                <li>access_token - 授权标识(登录时成功时可以得到)    </li>
+                                <li>to_user - 接收者uid    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;message&quot;: {
+					    &quot;m_id&quot;: &quot;消息ID&quot;,
+					    &quot;text&quot;: &quot;消息内容&quot;,
+					    &quot;create_time&quot;: &quot;创建时间&quot;,
+					    &quot;type&quot;: &quot;消息类型 整数&quot;,
+					    &quot;from_user&quot;: {
+					      &quot;uid&quot;: &quot;用户名&quot;,
+					      &quot;name&quot;: &quot;昵称&quot;,
+					      &quot;photo&quot;: &quot;头像&quot;,
+					    },
+					    &quot;to_user&quot;: {
+					        &quot;uid&quot;: &quot;用户名&quot;,
+					        &quot;name&quot;: &quot;昵称&quot;,
+					        &quot;photo&quot;: &quot;头像&quot;,
+					      },
+					  },
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>获取消息id大于since_id的消息 <code>api/chat/newmessages.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>since_id - 整数    </li>
+                                <li>access_token - 授权标识    </li>
+                                <li>count - 消息条数(默认为40)    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;messages&quot;:[
+						  {
+						    &quot;m_id&quot;: &quot;消息ID&quot;,
+						    &quot;text&quot;: &quot;消息内容&quot;,
+						    &quot;create_time&quot;: &quot;创建时间&quot;,
+						    &quot;type&quot;: &quot;消息类型 整数&quot;,
+						    &quot;from_user&quot;: {
+						      &quot;uid&quot;: &quot;用户名&quot;,
+						      &quot;name&quot;: &quot;昵称&quot;,
+						      &quot;photo&quot;: &quot;头像&quot;,
+						    },
+						    &quot;to_user&quot;: {
+						        &quot;uid&quot;: &quot;用户名&quot;,
+						        &quot;name&quot;: &quot;昵称&quot;,
+						        &quot;photo&quot;: &quot;头像&quot;,
+						      },
+						  },
+					 ]
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>获取消息id小于max_id的消息 <code>api/chat/oldmessages.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>max_id - 整数    </li>
+                                <li>access_token - 授权标识    </li>
+                                <li>count - 消息条数(默认为40)    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;messages&quot;: [
+						  {
+						    &quot;m_id&quot;: &quot;消息ID&quot;,
+						    &quot;text&quot;: &quot;消息内容&quot;,
+						    &quot;create_time&quot;: &quot;创建时间&quot;,
+						    &quot;type&quot;: &quot;消息类型 整数&quot;,
+						    &quot;from_user&quot;: {
+						      &quot;uid&quot;: &quot;用户名&quot;,
+						      &quot;name&quot;: &quot;昵称&quot;,
+						      &quot;photo&quot;: &quot;头像&quot;,
+						    },
+						    &quot;to_user&quot;: {
+						        &quot;uid&quot;: &quot;用户名&quot;,
+						        &quot;name&quot;: &quot;昵称&quot;,
+						        &quot;photo&quot;: &quot;头像&quot;,
+						      },
+						  },
+					  ]
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>发送一条状态 <code>api/status/upload.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>text - 状态内容    </li>
+                                <li>pics - 状态配图地址,数组  最多为9  </li>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;success&quot;: {
+					    &quot;message&quot; : &quot;success&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>获取状态id大于since_id的状态 <code>api/status/newstatuses.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>since_id - 整数    </li>
+                                <li>access_token - 授权标识    </li>
+                                <li>count - 消息条数(默认为40)    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;statuses&quot;: [
+					    {
+					      &quot;s_id&quot;: &quot;状态ID&quot;,
+					      &quot;text&quot;: &quot;状态内容&quot;,
+					      &quot;create_time&quot;: &quot;创建时间&quot;,
+					      &quot;pics&quot;:[
+					      		&quot;图片地址1&quot;,
+					      		&quot;图片地址2&quot;,
+					      ],
+					      &quot;count&quot; : &quot;评论数 整数&quot;,
+					      &quot;from_user&quot;: {
+					        &quot;uid&quot;: &quot;用户名&quot;,
+					        &quot;name&quot;: &quot;昵称&quot;,
+					        &quot;photo&quot;: &quot;头像&quot;,
+					      },
+					    },
+					  ]
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>获取状态id小于max_id的状态 <code>api/status/oldstatuses.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>max_id - 整数    </li>
+                                <li>access_token - 授权标识    </li>
+                                <li>count - 消息条数(默认为40)    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;statuses&quot;: [
+					    {
+					      &quot;s_id&quot;: &quot;状态ID&quot;,
+					      &quot;text&quot;: &quot;状态内容&quot;,
+					      &quot;create_time&quot;: &quot;创建时间&quot;,
+					      &quot;pics&quot;:[
+					      		&quot;图片地址1&quot;,
+					      		&quot;图片地址2&quot;,
+					      ],
+					      &quot;count&quot; : &quot;评论数 整数&quot;,
+					      &quot;from_user&quot;: {
+					        &quot;uid&quot;: &quot;用户名&quot;,
+					        &quot;name&quot;: &quot;昵称&quot;,
+					        &quot;photo&quot;: &quot;头像&quot;,
+					      },
+					    },
+					  ]
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>发送一条评论 <code>api/comment/upload.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>text - 评论内容    </li>
+                                <li>s_id - 被评论的状态ID    </li>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;success&quot;: {
+					    &quot;message&quot; : &quot;success&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>获取一条状态的所有评论 <code>api/comment/comments.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>s_id - 状态的ID    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;comments&quot;: [
+					    {
+					      &quot;c_id&quot;: &quot;评论ID&quot;,
+					      &quot;text&quot;: &quot;评论内容&quot;,
+					      &quot;create_time&quot;: &quot;创建时间&quot;,
+					      &quot;from_user&quot;: {
+					        &quot;uid&quot;: &quot;用户名&quot;,
+					        &quot;name&quot;: &quot;昵称&quot;,
+					        &quot;photo&quot;: &quot;头像&quot;,
+					      },
+					    },
+					  ]
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>发送好友请求 <code>api/friend/addfriend.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>text - 请求说明    </li>
+                                <li>to_user - 被请求的用户uid    </li>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;success&quot;: {
+					    &quot;message&quot; : &quot;success&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>处理一个好友请求 <code>api/friend/dowithrequest.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>f_id - 好友请求消息ID    </li>
+                                <li>result - (处理结果)(1,  "拒绝"),(2,  "同意") 
+ </li>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;success&quot;: {
+					    &quot;message&quot; : &quot;success&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>删除一个好友 <code>api/friend/deletefriend.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>to_user - 欲删除的好友uid    </li>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;success&quot;: {
+					    &quot;message&quot; : &quot;success&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>获取所有未处理的好友请求 <code>api/friend/newfriends.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;newfriends&quot;: [
+					    {
+					      &quot;f_id&quot;: &quot;好友请求消息ID&quot;,
+					      &quot;text&quot;: &quot;好友请求说明&quot;,
+					      &quot;create_time&quot;: &quot;创建时间&quot;,
+					      &quot;from_user&quot;: {
+					        &quot;uid&quot;: &quot;用户名&quot;,
+					        &quot;name&quot;: &quot;昵称&quot;,
+					        &quot;photo&quot;: &quot;头像&quot;,
+					      }
+					    },
+					  ]
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>获取好友列表 <code>api/friend/friendlist.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;friendlist&quot;: [
+					    {
+					      &quot;uid&quot;: &quot;用户名&quot;,
+					      &quot;name&quot;: &quot;昵称&quot;,
+					      &quot;photo&quot;: &quot;头像&quot;,
+					    },
+					  ]
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>搜索陌生人 <code>api/friend/search.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>access_token - 授权标识    </li>
+                                <li>key - 搜索关键词    </li>
+                                <li>page - 分页    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;users&quot;: [
+					    {
+					      &quot;uid&quot;: &quot;用户名&quot;,
+					      &quot;name&quot;: &quot;昵称&quot;,
+					      &quot;photo&quot;: &quot;头像&quot;,
+					    },
+					  ]
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>获取用户详细信息 <code>api/user/userinfo.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>uid - 用户名    </li>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;user&quot;: {
+					    &quot;uid&quot;: &quot;用户名&quot;,
+					    &quot;name&quot;: &quot;昵称&quot;,
+					    &quot;photo&quot;: &quot;头像&quot;,
+					    &quot;age&quot;: &quot;年龄&quot;,
+					    &quot;sex&quot;: &quot;性别&quot;,
+					    &quot;birthday&quot;: &quot;生日 Y-m-d&quot;,
+					    &quot;city&quot;: &quot;城市&quot;,
+					    &quot;isfriend&quot;: &quot;是否为我的好友&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>更新用户信息 <code>api/user/updateuserinfo.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>name - 昵称    </li>
+                                <li>age - 年龄    </li>
+                                <li>sex - 性别    </li>
+                                <li>birthday - 生日    </li>
+                                <li>city - 城市    </li>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;user&quot;: {
+					    &quot;uid&quot;: &quot;用户名&quot;,
+					    &quot;name&quot;: &quot;昵称&quot;,
+					    &quot;photo&quot;: &quot;头像&quot;,
+					    &quot;age&quot;: &quot;年龄&quot;,
+					    &quot;sex&quot;: &quot;性别&quot;,
+					    &quot;birthday&quot;: &quot;生日 Y-m-d&quot;,
+					    &quot;city&quot;: &quot;城市&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>更新用户密码 <code>api/user/updateuserpwd.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>pwd - 新密码    </li>
+                                <li>oldpwd - 旧密码    </li>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;user&quot;: {
+					    &quot;uid&quot;: &quot;用户名&quot;,
+					    &quot;name&quot;: &quot;昵称&quot;,
+					    &quot;photo&quot;: &quot;头像&quot;,
+					    &quot;age&quot;: &quot;年龄&quot;,
+					    &quot;sex&quot;: &quot;性别&quot;,
+					    &quot;birthday&quot;: &quot;生日 Y-m-d&quot;,
+					    &quot;city&quot;: &quot;城市&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+<li>
+        <p>更新用户头像 <code>api/user/updateuserphoto.json</code>  </p>
+        <ul>
+                <li>
+                        <p>请求方式: <code>POST</code>      </p>
+                            
+        <li>
+                                <p>返回结果：json      </p>
+                    
+                        <ul>
+                                <li>photo - 头像地址    </li>
+                                <li>access_token - 授权标识    </li>
+                            </ul>
+            
+                                <p>  JSON:</p>
+
+            <pre>
+                                                <p style="margin: 0;padding: 0;">--- success ---</p><code>{
+					  &quot;user&quot;: {
+					    &quot;uid&quot;: &quot;用户名&quot;,
+					    &quot;name&quot;: &quot;昵称&quot;,
+					    &quot;photo&quot;: &quot;头像&quot;,
+					    &quot;age&quot;: &quot;年龄&quot;,
+					    &quot;sex&quot;: &quot;性别&quot;,
+					    &quot;birthday&quot;: &quot;生日 Y-m-d&quot;,
+					    &quot;city&quot;: &quot;城市&quot;,
+					  }
+					}
+			</code>
+                                                <p style="margin: 0;padding: 0;">--- error ---</p><code>{
+					  &quot;error&quot;: {
+					    &quot;message&quot;: &quot;错误信息&quot;,
+					  }
+					}
+			</code>
+                            </pre>
+                    
+                    </li>
+        
+    </ul>
+</li>
+<br>
+</ol>
+
+
+
+    <hr>
+    <div class="footer"><center>Copyright © 2015 power by <a href="http://hezuoguang.sinaapp.com/">微米</a> | 感谢 <a href="http://www.stutostu.com/">偶尔陶醉</a> 提供制作工具</center></div>
+
+
+
+
+<script>
+    var arr = document.getElementsByTagName("code");
+    for(i in arr){
+        var content = arr[i].innerText;
+        if (typeof content == "undefined") {
+            continue;
+        }
+        var key = content.substr(0,1);
+        //console.log(key);
+        switch (key) {
+            case "{":
+                arr[i].innerText = "\n"+JSON.stringify(eval("(" + content + ")"), null, "    ") + "\n";
+                break;
+            
+            case "<":
+                content = content.replace(/>\s+</g, '><');
+                // console.log(content);
+                arr[i].innerText = "\n"+formatXml(content);
+                break;
+        }
+    }
+
+    function formatXml(xml) {
+        var reg = /(>)(<)(\/*)/g;
+        var wsexp = / *(.*) +\n/g;
+        var contexp = /(<.+>)(.+\n)/g;
+        xml = xml.replace(reg, '$1\n$2$3').replace(wsexp, '$1\n').replace(contexp, '$1\n$2');
+        var pad = 0;
+        var formatted = '';
+        var lines = xml.split('\n');
+        var indent = 0;
+        var lastType = 'other';
+        // 4 types of tags - single, closing, opening, other (text, doctype, comment) - 4*4 = 16 transitions 
+        var transitions = {
+            'single->single': 0,
+            'single->closing': -1,
+            'single->opening': 0,
+            'single->other': 0,
+            'closing->single': 0,
+            'closing->closing': -1,
+            'closing->opening': 0,
+            'closing->other': 0,
+            'opening->single': 1,
+            'opening->closing': 0,
+            'opening->opening': 1,
+            'opening->other': 1,
+            'other->single': 0,
+            'other->closing': -1,
+            'other->opening': 0,
+            'other->other': 0
+        };
+
+        for (var i = 0; i < lines.length; i++) {
+            var ln = lines[i];
+            var single = Boolean(ln.match(/<.+\/>/)); // is this line a single tag? ex. <br />
+            var closing = Boolean(ln.match(/<\/.+>/)); // is this a closing tag? ex. </a>
+            var opening = Boolean(ln.match(/<[^!].*>/)); // is this even a tag (that's not <!something>)
+            var type = single ? 'single' : closing ? 'closing' : opening ? 'opening' : 'other';
+            var fromTo = lastType + '->' + type;
+            lastType = type;
+            var padding = '';
+
+            indent += transitions[fromTo];
+            for (var j = 0; j < indent; j++) {
+                padding += '  ';
+            }
+            if (fromTo == 'opening->closing')
+                formatted = formatted.substr(0, formatted.length - 1) + ln + '\n'; // substr removes line break (\n) from prev loop
+            else
+                formatted += padding + ln + '\n';
+        }
+
+        return formatted;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% autoescape off %}
+{
+  "user": {
+    "uid": "{{ user.uid }}",
+    "name": "{{ user.name }}",
+    "photo": "{{ user.photo }}",
+    "age": "{{ user.age }}",
+    "sex": "{{ user.sex }}",
+    "birthday": "{{ user.birthday | date:'Y-m-d'}}",
+    "city": "{{ user.city }}",
+    "isfriend": "{{ isfriend }}"
+  }
+}
+{% endautoescape %}
